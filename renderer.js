@@ -2,7 +2,13 @@
 /////VARIABLES + SETUP/////
 ///////////////////////////
 
-const socket = io("https://ttthrantonlineserver.herokuapp.com", {
+// Online
+// const socket = io("https://ttthrantonlineserver.herokuapp.com", {
+//   withCredentials: true,
+// });
+
+// Offline
+const socket = io("http://127.00.1:3000", {
   withCredentials: true,
 });
 
@@ -18,12 +24,12 @@ let room;
 
 //index.html//
 
-const gameScreen = document.getElementById("gameScreen");
-const welcomeScreen = document.getElementById("welcomeScreen");
-const createGameBtn = document.getElementById("createGameBtn");
-const joinGameBtn = document.getElementById("joinGameBtn");
-const gameCodeText = document.getElementById("gameCodeText");
-const gameCodeDisplay = document.getElementById("gameCodeDisplay");
+const gameScreen = document.getElementById("gameScreen"); // Main Game screen
+const welcomeScreen = document.getElementById("welcomeScreen"); // Welcome screen (join or create)
+const createGameBtn = document.getElementById("createGameBtn"); // Create game button
+const joinGameBtn = document.getElementById("joinGameBtn"); // Join game button
+const gameCodeText = document.getElementById("gameCodeText"); // Code textbox
+const gameCodeDisplay = document.getElementById("gameCodeDisplay"); // Code Label
 
 createGameBtn.addEventListener("click", newGame);
 joinGameBtn.addEventListener("click", joinGame);
@@ -35,10 +41,23 @@ chooseTitle.innerHTML = "Choose your option: P1 (X)";
 /////FUNCTIONS/////
 ///////////////////
 
+// Sockets
 socket.on("update", putSymbol);
 socket.on("winner", doWinner);
 socket.on("init", handleInit);
 socket.on("gameCode", handleGameCode);
+socket.on("tooManyPlayers", handleTooManyPlayers);
+socket.on("unknownGame", handleUnknownGame);
+
+function handleTooManyPlayers() {
+  gameCodeText.value = "";
+  alert("Too many players!");
+}
+
+function handleUnknownGame() {
+  gameCodeText.value = "";
+  alert("Game not Found");
+}
 
 function handleGameCode(gamecode) {
   room = gamecode;
@@ -47,17 +66,16 @@ function handleGameCode(gamecode) {
 
 function handleInit(number) {
   playerNumber = number;
+  init();
 }
 
 function newGame() {
   socket.emit("newGame");
-  init();
 }
 
 function joinGame() {
   const code = gameCodeText.value;
   socket.emit("joinGame", code);
-  init();
 }
 
 function init() {
