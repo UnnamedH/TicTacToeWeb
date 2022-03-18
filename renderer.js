@@ -2,7 +2,7 @@
 /////VARIABLES + SETUP/////
 ///////////////////////////
 
-const socket = io("http://localhost:3000", {
+const socket = io("https://ttthrantonlineserver.herokuapp.com", {
   withCredentials: true,
 });
 
