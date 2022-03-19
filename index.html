@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <style>
-    #gameScreen {
+    #gameScreen, #endScreen {
       display: none;
     }
   </style>
@@ -28,6 +28,28 @@
       </pre>
       <div id="connectionDiv">Disconnected</div>
     </body>
+    </div>
+    <div id="endScreen">
+      <pre>
+  
+      </pre>
+      <h1 class="title" text-align="center">Game over!</h1>
+      <p class="title" text-align="center" id="winnerText"></p>
+  
+      <div class="text">
+          The scores are:
+      </div>
+      <div class="score" id="p1score">
+          P1: 2
+      </div>
+      <div class="score" id="p2score">
+          P2: 1
+      </div>
+  
+      <div class="content">
+        <button class="menuBtn" id="playAgainBtn" type="submit" onclick="clicked2(id)" >Play Again</button>
+        <button class="menuBtn" id="restartBtn" type="submit" onclick="clicked2(id)" >Restart</button>
+      </div>
     </div>
     <div id="gameScreen">
       <h1 class="title" text-align="center">Tic Tac Toe!</h1>
@@ -51,7 +73,7 @@
       <h1>Your game code is: <span id="gameCodeDisplay"></span></h1>
     </div>
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
-    <script src="renderer.js"></script>
+    <script src="render.js"></script>
   </body>
   <footer>
     <p>By: TheH</p>
