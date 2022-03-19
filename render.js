@@ -3,14 +3,14 @@
 ///////////////////////////
 
 // Online
-const socket = io("https://tictactoehrantserver.herokuapp.com", {
-  withCredentials: true,
-});
-
-// Offline
-// const socket = io("http://127.00.1:3000", {
+// const socket = io("https://tictactoehrantserver.herokuapp.com", {
 //   withCredentials: true,
 // });
+
+// Offline
+const socket = io("http://127.00.1:3000", {
+  withCredentials: true,
+});
 
 ///////////////
 // Variables //
@@ -75,6 +75,22 @@ function init() {
   player = 1;
   path = window.location;
   index = 0;
+
+  for (i = 1; i < 10; i++) {
+    btn = document.getElementById("btn" + i);
+    btn.style.backgroundColor = "chocolate";
+
+    btn.addEventListener("mouseover", handleMouseOver);
+    btn.addEventListener("mouseout", handleMouseOut);
+  }
+}
+
+function handleMouseOut(event) {
+  event.target.style.backgroundColor = "chocolate";
+}
+
+function handleMouseOver(event) {
+  event.target.style.backgroundColor = "orange";
 }
 
 function clicked(sender) {
@@ -87,12 +103,31 @@ function clicked(sender) {
   }
 }
 
+function clickedMenu(sender) {
+  btn = document.getElementById(sender);
+
+  if (btn.id == "playAgainBtn") {
+    socket.emit("playAgain", room);
+    endScreen.style.display = "none";
+    gameScreen.style.display = "block";
+    init();
+  } else if (btn.id == "leaveRoomBtn") {
+    socket.emit("leaveRoom", room);
+    init();
+    endScreen.style.display = "none";
+    gameScreen.style.display = "none";
+    welcomeScreen.style.display = "block";
+  }
+}
+
 function putSymbol(board) {
   console.log(board);
 
   for (index = 1; index < board.length + 1; index++) {
     ch = board.charAt(index - 1);
     if (ch == " ") {
+      btn = document.getElementById("btn" + index);
+      btn.innerHTML = " ";
     } else if (ch == "X") {
       btn = document.getElementById("btn" + index);
       btn.innerHTML = "X";
@@ -103,7 +138,7 @@ function putSymbol(board) {
   }
 }
 
-function doWinner(p, btns, draw) {
+function doWinner(state, btns, draw) {
   if (draw) {
     btns.forEach(function (b) {
       console.log(b);
@@ -112,11 +147,11 @@ function doWinner(p, btns, draw) {
       b.style.backgroundColor = "yellow";
     });
   } else if (!draw) {
-    console.log(`${p} is the winner`);
+    console.log(`${state.player} is the winner`);
 
-    if (p == 1) {
+    if (state.player == 1) {
       symbol = "X";
-    } else if (p == 2) {
+    } else if (state.player == 2) {
       symbol = "O";
     }
 
@@ -130,6 +165,9 @@ function doWinner(p, btns, draw) {
 
   endScreen.style.display = "block";
   gameScreen.style.display = "none";
+
+  p1score.innerHTML = state.scoreP1;
+  p2score.innerHTML = state.scoreP2;
 }
 
 ////////////////////
