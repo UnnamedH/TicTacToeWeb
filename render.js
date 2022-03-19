@@ -44,6 +44,7 @@ const connectionDiv = document.getElementById("connectionDiv"); // Connection st
 const chooseTitle = document.getElementById("chooseTitle"); // Title that shows the current player
 const p1score = document.getElementById("p1score"); // Player 1 score label
 const p2score = document.getElementById("p2score"); // Player 2 score label
+const playerTitle = document.getElementById("playerTitle"); // Title that shows which player you are
 
 ////////////
 // Events //
@@ -67,6 +68,8 @@ socket.on("unknownGame", handleUnknownGame);
 // Main functions //
 ////////////////////
 
+function replay() {}
+
 function init() {
   welcomeScreen.style.display = "none";
   gameScreen.style.display = "block";
@@ -82,6 +85,8 @@ function init() {
 
     btn.addEventListener("mouseover", handleMouseOver);
     btn.addEventListener("mouseout", handleMouseOut);
+
+    btn.innerHTML = " ";
   }
 }
 
@@ -120,8 +125,14 @@ function clickedMenu(sender) {
   }
 }
 
-function putSymbol(board) {
+function putSymbol(board, p) {
   console.log(board);
+
+  if (p == 1) {
+    chooseTitle.innerHTML = "Choose your option: P1 (X)";
+  } else if (p == 2) {
+    chooseTitle.innerHTML = "Choose your option: P2 (X)";
+  }
 
   for (index = 1; index < board.length + 1; index++) {
     ch = board.charAt(index - 1);
@@ -166,8 +177,8 @@ function doWinner(state, btns, draw) {
   endScreen.style.display = "block";
   gameScreen.style.display = "none";
 
-  p1score.innerHTML = state.scoreP1;
-  p2score.innerHTML = state.scoreP2;
+  p1score.innerHTML = `P1: ${state.scoreP1}`;
+  p2score.innerHTML = `P2: ${state.scoreP2}`;
 }
 
 ////////////////////
@@ -191,6 +202,7 @@ function handleGameCode(gamecode) {
 
 function handleInit(number) {
   playerNumber = number;
+  playerTitle.innerText = `You are P${number}`;
   init();
 }
 
@@ -201,6 +213,7 @@ function newGame() {
 function joinGame() {
   const code = gameCodeText.value;
   socket.emit("joinGame", code);
+  gameCodeText.value = "";
 }
 
 function connectionTest() {
