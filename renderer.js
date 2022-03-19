@@ -30,6 +30,7 @@ const createGameBtn = document.getElementById("createGameBtn"); // Create game b
 const joinGameBtn = document.getElementById("joinGameBtn"); // Join game button
 const gameCodeText = document.getElementById("gameCodeText"); // Code textbox
 const gameCodeDisplay = document.getElementById("gameCodeDisplay"); // Code Label
+const connectionDiv = document.getElementById("connectionDiv"); // Connection status div
 
 createGameBtn.addEventListener("click", newGame);
 joinGameBtn.addEventListener("click", joinGame);
@@ -42,6 +43,7 @@ chooseTitle.innerHTML = "Choose your option: P1 (X)";
 ///////////////////
 
 // Sockets
+socket.on("test", connectionTest);
 socket.on("update", putSymbol);
 socket.on("winner", doWinner);
 socket.on("init", handleInit);
@@ -138,6 +140,12 @@ function doWinner(p, btns, draw) {
       b.style.backgroundColor = "green";
     });
   }
+}
+
+function connectionTest() {
+  connectionDiv.innerHTML = "Connected";
+  connectionDiv.style.color = "green";
+  console.log("connected");
 }
 
 // function replaceWindow() {
