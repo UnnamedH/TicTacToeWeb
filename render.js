@@ -3,14 +3,14 @@
 ///////////////////////////
 
 // Online
-// const socket = io("https://ttthrantonlineserver.herokuapp.com", {
-//   withCredentials: true,
-// });
-
-// Offline
-const socket = io("http://127.00.1:3000", {
+const socket = io("https://tictactoehrantserver.herokuapp.com", {
   withCredentials: true,
 });
+
+// Offline
+// const socket = io("http://127.00.1:3000", {
+//   withCredentials: true,
+// });
 
 ///////////////
 // Variables //
@@ -41,7 +41,9 @@ const joinGameBtn = document.getElementById("joinGameBtn"); // Join game button
 const gameCodeText = document.getElementById("gameCodeText"); // Code textbox
 const gameCodeDisplay = document.getElementById("gameCodeDisplay"); // Code Label
 const connectionDiv = document.getElementById("connectionDiv"); // Connection status div
-const chooseTitle = document.getElementById("chooseTitle");
+const chooseTitle = document.getElementById("chooseTitle"); // Title that shows the current player
+const p1score = document.getElementById("p1score"); // Player 1 score label
+const p2score = document.getElementById("p2score"); // Player 2 score label
 
 ////////////
 // Events //
@@ -52,7 +54,7 @@ joinGameBtn.addEventListener("click", joinGame);
 // Setup //
 chooseTitle.innerHTML = "Choose your option: P1 (X)";
 
-// Sockets //
+// Sockets Listeners //
 socket.on("test", connectionTest);
 socket.on("update", putSymbol);
 socket.on("winner", doWinner);
@@ -125,6 +127,9 @@ function doWinner(p, btns, draw) {
       b.style.backgroundColor = "green";
     });
   }
+
+  endScreen.style.display = "block";
+  gameScreen.style.display = "none";
 }
 
 ////////////////////
