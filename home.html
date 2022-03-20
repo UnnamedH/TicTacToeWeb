@@ -1,32 +1,81 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Pick Your Choice!</title>
-    <link rel="stylesheet" href="index.css">
-    <script defer src="start.js"></script>
+    <meta charset="UTF-8" />
+    <title>Multiplayer Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
+  <style>
+    #gameScreen, #endScreen {
+      display: none;
+    }
+  </style>
   <body>
-    <pre>
+    <pre class="pre"></pre>
+    <div id="welcomeScreen">
+      <h1>Multiplayer Tic Tac Toe!</h1>
+      <button type="submit" class="menuBtn" id="createGameBtn">Create New Game</button>
+      <div>
+        OR
+      </div>
+      <div>
+        <input type="text" class="menuBtn" placeholder="Enter Game Code" id="gameCodeText">
+        <button type="submit" class="menuBtn" id="joinGameBtn">Join Game</button>
+      </div>
+      <pre>
 
-    </pre>
-    <h1 class="title" text-align="center">Tic Tac Toe!</h1>
-    <p class="title" text-align="center">Choose your option:</p>
+        
+      </pre>
+      <div id="connectionDiv">Disconnected</div>
+    </div>
+    <div id="endScreen">
+      <pre>
+  
+      </pre>
+      <h1 class="title" text-align="center">Game over!</h1>
+      <p class="title" text-align="center" id="winnerText"></p>
+  
+      <div class="text">
+          The scores are:
+      </div>
+      <div class="score" id="p1score">
+          P1: 2
+      </div>
+      <div class="score" id="p2score">
+          P2: 1
+      </div>
+  
+      <div class="content">
+        <button class="menuBtn" id="playAgainBtn" type="submit" onclick="clickedMenu(id)" >Play Again</button>
+        <button class="menuBtn" id="leaveRoomBtn" type="submit" onclick="clickedMenu(id)" >Leave Room</button>
+      </div>
+    </div>
+    <div id="gameScreen">
+      <h1 class="title" text-align="center">Tic Tac Toe!</h1>
+      <p id="playerTitle" class="title" text-align="center">You are P0</p>
+      <p id="chooseTitle" class="title" text-align="center">Choose your option:</p>
 
-    <div id="topDiv" class="btnContent">
-      <button class="btn" id="btn1" type="submit" onclick="clicked(id)" > </button>
-      <button class="btn" id="btn2" type="submit" onclick="clicked(id)" > </button>
-      <button class="btn" id="btn3" type="submit" onclick="clicked(id)" > </button>
+      <div id="topDiv" class="btnContent">
+        <button class="btn" id="btn1" type="submit" onclick="clicked(id)"> </button>
+        <button class="btn" id="btn2" type="submit" onclick="clicked(id)"> </button>
+        <button class="btn" id="btn3" type="submit" onclick="clicked(id)"> </button>
+      </div>
+      <div id="midDiv" class="btnContent">
+        <button class="btn" id="btn4" type="submit" onclick="clicked(id)"> </button>
+        <button class="btn" id="btn5" type="submit" onclick="clicked(id)"> </button>
+        <button class="btn" id="btn6" type="submit" onclick="clicked(id)"> </button>
+      </div>
+      <div id="bottomDiv" class="btnContent">
+        <button class="btn" id="btn7" type="submit" onclick="clicked(id)"> </button>
+        <button class="btn" id="btn8" type="submit" onclick="clicked(id)"> </button>
+        <button class="btn" id="btn9" type="submit" onclick="clicked(id)"> </button>
+      </div>
+      <h1>Your game code is: <span id="gameCodeDisplay"></span></h1>
     </div>
-    <div id="midDiv" class="btnContent">
-      <button class="btn" id="btn4" type="submit" onclick="clicked(id)" > </button>
-      <button class="btn" id="btn5" type="submit" onclick="clicked(id)" > </button>
-      <button class="btn" id="btn6" type="submit" onclick="clicked(id)" > </button>
-    </div>
-    <div id="bottomDiv" class="btnContent">
-      <button class="btn" id="btn7" type="submit" onclick="clicked(id)" > </button>
-      <button class="btn" id="btn8" type="submit" onclick="clicked(id)" > </button>
-      <button class="btn" id="btn9" type="submit" onclick="clicked(id)" > </button>
-    </div>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+    <script src="render.js"></script>
   </body>
+  <footer>
+    <p>By: TheH </p>
+  </footer>
 </html>
