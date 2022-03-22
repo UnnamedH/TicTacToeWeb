@@ -75,7 +75,6 @@ function init() {
   gameScreen.style.display = "block";
 
   enabled = true;
-  player = 1;
   path = window.location;
   index = 0;
 
