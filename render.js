@@ -168,8 +168,10 @@ function doWinner(state, btns, draw) {
 
     if (state.player == playerNumber) {
       winnerText.innerHTML = `You Win!`;
+      console.log("You Win!");
     } else if (state.player != playerNumber) {
       winnerText.innerHTML = `Player ${state.player} wins! You Lose!`;
+      console.log("you lose");
     }
 
     btns.forEach(function (b) {
