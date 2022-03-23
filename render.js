@@ -130,7 +130,7 @@ function putSymbol(board, p) {
   if (p == 1) {
     chooseTitle.innerHTML = "Choose your option: P1 (X)";
   } else if (p == 2) {
-    chooseTitle.innerHTML = "Choose your option: P2 (X)";
+    chooseTitle.innerHTML = "Choose your option: P2 (O)";
   }
 
   for (index = 1; index < board.length + 1; index++) {
