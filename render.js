@@ -45,6 +45,7 @@ const chooseTitle = document.getElementById("chooseTitle"); // Title that shows 
 const p1score = document.getElementById("p1score"); // Player 1 score label
 const p2score = document.getElementById("p2score"); // Player 2 score label
 const playerTitle = document.getElementById("playerTitle"); // Title that shows which player you are
+const winnerText = document.getElementById("winnerText"); // Title message for who won etc
 
 ////////////
 // Events //
@@ -163,6 +164,12 @@ function doWinner(state, btns, draw) {
       symbol = "X";
     } else if (state.player == 2) {
       symbol = "O";
+    }
+
+    if (state.player == playerNumber) {
+      winnerText.innerHTML = `You Win!`;
+    } else if (state.player != playerNumber) {
+      winnerText.innerHTML = `Player ${state.player} wins! You Lose!`;
     }
 
     btns.forEach(function (b) {
