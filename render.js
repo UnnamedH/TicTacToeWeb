@@ -3,20 +3,20 @@
 ///////////////////////////
 
 // Online
-const socket = io("https://tictactoehrantserver.herokuapp.com", {
-  withCredentials: true,
-});
-
-// Offline
-// const socket = io("http://127.00.1:3000", {
+// const socket = io("https://tictactoehrantserver.herokuapp.com", {
 //   withCredentials: true,
 // });
+
+// Offline
+const socket = io("http://127.0.0.1:3000", {
+  withCredentials: true,
+});
 
 ///////////////
 // Variables //
 ///////////////
 
-let enabled;
+let enabled = false;
 let btn;
 let player;
 let playerNumber;
@@ -64,6 +64,7 @@ socket.on("init", handleInit);
 socket.on("gameCode", handleGameCode);
 socket.on("tooManyPlayers", handleTooManyPlayers);
 socket.on("unknownGame", handleUnknownGame);
+socket.on("start", handleStart);
 
 ////////////////////
 // Main functions //
@@ -71,11 +72,17 @@ socket.on("unknownGame", handleUnknownGame);
 
 function replay() {}
 
-function init() {
+function init(p) {
+  if (p == 1) {
+    chooseTitle.innerHTML = "Choose your option: P1 (X)";
+  } else if (p == 2) {
+    chooseTitle.innerHTML = "Choose your option: P2 (O)";
+  }
+
   welcomeScreen.style.display = "none";
   gameScreen.style.display = "block";
 
-  enabled = true;
+  enabled = false;
   path = window.location;
   index = 0;
 
@@ -88,14 +95,6 @@ function init() {
 
     btn.innerHTML = " ";
   }
-}
-
-function handleMouseOut(event) {
-  event.target.style.backgroundColor = "chocolate";
-}
-
-function handleMouseOver(event) {
-  event.target.style.backgroundColor = "orange";
 }
 
 function clicked(sender) {
@@ -193,6 +192,19 @@ function doWinner(state, btns, draw) {
 // Event handlers //
 ////////////////////
 
+function handleStart() {
+  alertify.message("Game Started!");
+  enabled = true;
+}
+
+function handleMouseOut(event) {
+  event.target.style.backgroundColor = "chocolate";
+}
+
+function handleMouseOver(event) {
+  event.target.style.backgroundColor = "orange";
+}
+
 function handleTooManyPlayers() {
   gameCodeText.value = "";
   alert("Too many players!");
@@ -208,10 +220,14 @@ function handleGameCode(gamecode) {
   gameCodeDisplay.innerText = gamecode;
 }
 
-function handleInit(number) {
+function handleInit(number, p) {
+  console.log("got init");
+  if (number == 1) {
+    alertify.message("Waiting for game to start...");
+  }
   playerNumber = number;
   playerTitle.innerText = `You are P${number}`;
-  init();
+  init(p);
 }
 
 function newGame() {
