@@ -3,14 +3,14 @@
 ///////////////////////////
 
 // Online
-// const socket = io("https://tictactoehrantserver.herokuapp.com", {
-//   withCredentials: true,
-// });
-
-// Offline
-const socket = io("http://127.0.0.1:3000", {
+const socket = io("https://tictactoehrantserver.herokuapp.com", {
   withCredentials: true,
 });
+
+// Offline
+// const socket = io("http://127.0.0.1:3000", {
+//   withCredentials: true,
+// });
 
 ///////////////
 // Variables //
