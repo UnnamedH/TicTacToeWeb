@@ -81,6 +81,7 @@ function init(p) {
 
   welcomeScreen.style.display = "none";
   gameScreen.style.display = "block";
+  endScreen.style.display = "none";
 
   enabled = false;
   path = window.location;
