@@ -1,0 +1,6 @@
+{
+  "type": "commonjs",
+  "dependencies": {
+    "alertifyjs": "^1.13.1"
+  }
+}
