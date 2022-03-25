@@ -1,28 +1,27 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: large;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
-  color: chocolate;
-}
-
 html {
   background: black;
   text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: chocolate;
 }
 
-.gameScreen {
-  margin-bottom: 20px;
-  color: white;
+body {
+  font-size: large;
+  margin: auto;
+  max-width: 50rem;
+  padding: 2rem;
 }
 
 .btn {
-  background-color: chocolate;
+  background: chocolate;
   margin: auto;
   color: black;
   border: none;
   border-radius: 6px;
+}
+.gameScreen {
+  margin-bottom: 20px;
+  color: white;
 }
 
 .pre {
@@ -30,12 +29,12 @@ html {
 }
 
 .title {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   margin-top: 5px;
 }
 
 .menuBtn {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: large;
   background-color: chocolate;
