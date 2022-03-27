@@ -128,3 +128,8 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+#waitDiv {
+  font-size: 0.7rem;
+  filter: brightness(50%);
+}
