@@ -41,6 +41,7 @@ const joinGameBtn = document.getElementById("joinGameBtn"); // Join game button
 const gameCodeText = document.getElementById("gameCodeText"); // Code textbox
 const gameCodeDisplay = document.getElementById("gameCodeDisplay"); // Code Label
 const connectionDiv = document.getElementById("connectionDiv"); // Connection status div
+const waitDiv = document.getElementById("waitDiv"); // Div that shows please wait message
 const chooseTitle = document.getElementById("chooseTitle"); // Title that shows the current player
 const p1score = document.getElementById("p1score"); // Player 1 score label
 const p2score = document.getElementById("p2score"); // Player 2 score label
@@ -244,6 +245,7 @@ function joinGame() {
 function connectionTest() {
   connectionDiv.innerHTML = "Connected";
   connectionDiv.style.color = "green";
+  waitDiv.innerHTML = "";
   console.log("connected");
 }
 
