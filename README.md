@@ -1,11 +1,10 @@
 # Tic Tac Toe Web by Hrant
+This is the client repository, the server repository is still not ready for full publishment (Hoping it can be soon)
 https://tictactoehrant.herokuapp.com
 
 # Main Goal
 This is my Project to make a completely functional and quick Tic Tac Toe Game on the Web Hosted on heroku, maintained by me.
 My aim is to make it really simple and fast without any sign-in or extra steps to start playing, hope this is what gets to the users.
-
-This is the client repository, the server repository is still not ready for full publishment (Hoping it can be soon)
 
 You can start by either creating a game or joining a game with the code.
 # How to creating a game
