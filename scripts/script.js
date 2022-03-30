@@ -1,20 +1,18 @@
-///////////////////////////
-/////VARIABLES + SETUP/////
-///////////////////////////
+///////////
+// Setup //
+///////////
 
-// Online
+// Online mode
 const socket = io("https://tictactoehrantserver.herokuapp.com", {
   withCredentials: true,
 });
 
-// Offline
+// Offline mode
 // const socket = io("http://127.0.0.1:3000", {
 //   withCredentials: true,
 // });
 
-///////////////
 // Variables //
-///////////////
 
 let enabled = false;
 let btn;
@@ -26,31 +24,25 @@ let index;
 let symbol;
 let room;
 
-///////////////
-// Constants //
-///////////////
-
 // Screen //
-const gameScreen = document.getElementById("gameScreen"); // Main Game screen
-const welcomeScreen = document.getElementById("welcomeScreen"); // Welcome screen (join or create)
-const endScreen = document.getElementById("endScreen"); // End Screen (scores)
+const gameScreen = document.getElementById("gameScreen"); //////////// Main Game screen
+const welcomeScreen = document.getElementById("welcomeScreen"); ////// Welcome screen (join or create)
+const endScreen = document.getElementById("endScreen"); ////////////// End Screen (scores)
 // Buttons //
-const createGameBtn = document.getElementById("createGameBtn"); // Create game button
-const joinGameBtn = document.getElementById("joinGameBtn"); // Join game button
+const createGameBtn = document.getElementById("createGameBtn"); ////// Create game button
+const joinGameBtn = document.getElementById("joinGameBtn"); ////////// Join game button
 // Label / Text //
-const gameCodeText = document.getElementById("gameCodeText"); // Code textbox
+const gameCodeText = document.getElementById("gameCodeText"); //////// Code textbox
 const gameCodeDisplay = document.getElementById("gameCodeDisplay"); // Code Label
-const connectionDiv = document.getElementById("connectionDiv"); // Connection status div
-const waitDiv = document.getElementById("waitDiv"); // Div that shows please wait message
-const chooseTitle = document.getElementById("chooseTitle"); // Title that shows the current player
-const p1score = document.getElementById("p1score"); // Player 1 score label
-const p2score = document.getElementById("p2score"); // Player 2 score label
-const playerTitle = document.getElementById("playerTitle"); // Title that shows which player you are
-const winnerText = document.getElementById("winnerText"); // Title message for who won etc
+const connectionDiv = document.getElementById("connectionDiv"); ////// Connection status div
+const waitDiv = document.getElementById("waitDiv"); ////////////////// Div that shows please wait message
+const chooseTitle = document.getElementById("chooseTitle"); ////////// Title that shows the current player
+const p1score = document.getElementById("p1score"); ////////////////// Player 1 score label
+const p2score = document.getElementById("p2score"); ////////////////// Player 2 score label
+const playerTitle = document.getElementById("playerTitle"); ////////// Title that shows which player you are
+const winnerText = document.getElementById("winnerText"); //////////// Title message for who won etc
 
-////////////
 // Events //
-////////////
 createGameBtn.addEventListener("click", newGame);
 joinGameBtn.addEventListener("click", joinGame);
 
@@ -59,7 +51,7 @@ chooseTitle.innerHTML = "Choose your option: P1 (X)";
 
 // Sockets Listeners //
 socket.on("test", connectionTest);
-socket.on("update", putSymbol);
+socket.on("update", update);
 socket.on("winner", doWinner);
 socket.on("init", handleInit);
 socket.on("gameCode", handleGameCode);
@@ -70,8 +62,6 @@ socket.on("start", handleStart);
 ////////////////////
 // Main functions //
 ////////////////////
-
-function replay() {}
 
 function init(p) {
   if (p == 1) {
@@ -126,7 +116,7 @@ function clickedMenu(sender) {
   }
 }
 
-function putSymbol(board, p) {
+function update(board, p) {
   console.log(board);
 
   if (p == 1) {
@@ -248,8 +238,3 @@ function connectionTest() {
   waitDiv.innerHTML = "";
   console.log("connected");
 }
-
-// function replaceWindow() {
-//   console.log("here");
-//   path.replace("end.html");
-// }
