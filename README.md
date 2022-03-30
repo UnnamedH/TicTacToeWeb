@@ -2,13 +2,11 @@
 
 https://tictactoehrant.herokuapp.com
 
-My Project to make a completely functional and quick Tic Tac Toe Game on the Web.
-Hosted on heroku, maintained by me.
-
-My main aim is to make it really simple and fast without any sign or extra steps to start playing, hope this is what gets to the users.
+# Main Goal
+This is my Project to make a completely functional and quick Tic Tac Toe Game on the Web Hosted on heroku, maintained by me.
+My aim is to make it really simple and fast without any sign-in or extra steps to start playing, hope this is what gets to the users.
 
 You can start by either creating a game or joining a game with the code.
-
 # Creating a game:
 - Press on the create game button
 - On the bottom of the screen you should see a code (Consisting of Uppercase letters and numbers)
@@ -28,5 +26,6 @@ As with contributing, again i will not enforce any license for the time being as
 
 # Feedback
 I hope to see feedback on what can be changed to make the game a bit smoother and bug free.
+For any other suggestions or help you can contact me
 
 Thank you!
