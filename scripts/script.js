@@ -157,7 +157,9 @@ function doWinner(state, btns, draw) {
       symbol = "O";
     }
 
-    if (state.player == playerNumber) {
+    if (state.player == 3) {
+      winnerText.innerHTML = "Its a Tie!";
+    } else if (state.player == playerNumber) {
       winnerText.innerHTML = `You Win!`;
       console.log("You Win!");
     } else if (state.player != playerNumber) {
