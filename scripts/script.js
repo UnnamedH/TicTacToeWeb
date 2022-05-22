@@ -148,6 +148,8 @@ function doWinner(state, btns, draw) {
 
       b.style.backgroundColor = "yellow";
     });
+
+    winnerText.innerHTML = "It's a Tie";
   } else if (!draw) {
     console.log(`${state.player} is the winner`);
 
@@ -157,9 +159,7 @@ function doWinner(state, btns, draw) {
       symbol = "O";
     }
 
-    if (state.player == 3) {
-      winnerText.innerHTML = "Its a Tie!";
-    } else if (state.player == playerNumber) {
+    if (state.player == playerNumber) {
       winnerText.innerHTML = `You Win!`;
       console.log("You Win!");
     } else if (state.player != playerNumber) {
