@@ -2,15 +2,16 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta property="og:title" content="Tic Tac Toe Online!">
-    <meta property="og:url" content="https://tictactoehrant.herokuapp.com">
-    <meta property="og:site_name" content="Tic Tac Toe">
-    <meta property="og:description" content="tic tac toe made by hrant">
+    <meta property="og:title" content="Tic Tac Toe Online!" />
+    <meta property="og:url" content="https://tictactoehrant.herokuapp.com" />
+    <meta property="og:site_name" content="Tic Tac Toe" />
+    <meta property="og:description" content="tic tac toe made by hrant" />
     <title>Multiplayer Tic Tac Toe</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <style>
-    #gameScreen, #endScreen {
+    #gameScreen,
+    #endScreen {
       display: none;
     }
   </style>
@@ -18,47 +19,31 @@
     <div id="welcomeScreen" class="screen">
       <h1>Welcome to Multiplayer Tic Tac Toe!</h1>
       <button type="submit" class="menuBtn" id="createGameBtn">Create Game</button>
+      <div>OR</div>
       <div>
-        OR
-      </div>
-      <div>
-        <input type="text" class="menuBtn" placeholder="Enter Game Code Here" id="gameCodeText">
+        <input type="text" class="menuBtn" placeholder="Enter Game Code Here" id="gameCodeText" />
         <button type="submit" class="menuBtn" id="joinGameBtn">Join Game</button>
       </div>
-      <pre>
-
-        
-      </pre>
+      <pre></pre>
       <div id="connectionDiv">Disconnected</div>
       <div id="waitDiv">(Might have to wait a few seconds for the server to boot up)</div>
     </div>
     <div id="endScreen" class="screen">
-      <pre >
-  
-      </pre>
+      <pre></pre>
       <h1 class="title" text-align="center">Game over!</h1>
       <p class="title" text-align="center" id="winnerText"></p>
-  
-      <div class="text">
-          The scores are:
-      </div>
-      <div class="score" id="p1score">
-          P1: 2
-      </div>
-      <div class="score" id="p2score">
-          P2: 1
-      </div>
-  
+      <div class="text">The scores are:</div>
+      <div class="score" id="p1score">P1: 2</div>
+      <div class="score" id="p2score">P2: 1</div>
       <div class="content">
-        <button class="menuBtn" id="playAgainBtn" type="submit" onclick="clickedMenu(id)" >Play Again</button>
-        <button class="menuBtn" id="leaveRoomBtn" type="submit" onclick="clickedMenu(id)" >Leave Room</button>
+        <button class="menuBtn" id="playAgainBtn" type="submit" onclick="clickedMenu(id)">Play Again</button>
+        <button class="menuBtn" id="leaveRoomBtn" type="submit" onclick="clickedMenu(id)">Leave Room</button>
       </div>
     </div>
     <div id="gameScreen" class="screen">
       <h1 class="title" text-align="center">Tic Tac Toe!</h1>
       <p id="playerTitle" class="title" text-align="center">You are P0</p>
       <p id="chooseTitle" class="title" text-align="center">Choose your option:</p>
-
       <div id="topDiv" class="btnContent">
         <button class="btn" id="btn1" type="submit" onclick="clicked(id)"> </button>
         <button class="btn" id="btn2" type="submit" onclick="clicked(id)"> </button>
@@ -78,13 +63,11 @@
     </div>
   </body>
   <footer>
-    <p>By: TheH </p>
+    <p>By: TheH</p>
   </footer>
-
   <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
   <script src="node_modules\alertifyjs\build\alertify.js" type="text/javascript"></script>
   <script src="scripts/script.js"></script>
-  <link rel="stylesheet" href="node_modules\alertifyjs\build\css\alertify.css">
-  <link rel="stylesheet" href="node_modules\alertifyjs\build\css\themes\default.css">
-  
-</html>  
+  <link rel="stylesheet" href="node_modules\alertifyjs\build\css\alertify.css" />
+  <link rel="stylesheet" href="node_modules\alertifyjs\build\css\themes\default.css" />
+</html>
