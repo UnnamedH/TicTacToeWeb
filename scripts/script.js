@@ -117,7 +117,7 @@ function clickedMenu(sender) {
 }
 
 function update(board, p) {
-  console.log(board);
+  // console.log(board);
 
   if (p == 1) {
     chooseTitle.innerHTML = "Choose your option: P1 (X)";
@@ -143,7 +143,7 @@ function update(board, p) {
 function doWinner(state, btns, draw) {
   if (draw) {
     btns.forEach(function (b) {
-      console.log(b);
+      // console.log(b);
       b = document.getElementById(b);
 
       b.style.backgroundColor = "yellow";
@@ -151,7 +151,7 @@ function doWinner(state, btns, draw) {
 
     winnerText.innerHTML = "It's a Tie";
   } else if (!draw) {
-    console.log(`${state.player} is the winner`);
+    // console.log(`${state.player} is the winner`);
 
     if (state.player == 1) {
       symbol = "X";
@@ -161,14 +161,14 @@ function doWinner(state, btns, draw) {
 
     if (state.player == playerNumber) {
       winnerText.innerHTML = `You Win!`;
-      console.log("You Win!");
+      // console.log("You Win!");
     } else if (state.player != playerNumber) {
       winnerText.innerHTML = `Player ${state.player} wins! You Lose!`;
-      console.log("you lose");
+      // console.log("you lose");
     }
 
     btns.forEach(function (b) {
-      console.log(b);
+      // console.log(b);
       b = document.getElementById(b);
 
       b.style.backgroundColor = "green";
@@ -215,7 +215,7 @@ function handleGameCode(gamecode) {
 }
 
 function handleInit(number, p) {
-  console.log("got init");
+  // console.log("got init");
   if (number == 1) {
     alertify.message("Waiting for game to start...");
   }
@@ -238,5 +238,5 @@ function connectionTest() {
   connectionDiv.innerHTML = "Connected";
   connectionDiv.style.color = "green";
   waitDiv.innerHTML = "";
-  console.log("connected");
+  // console.log("connected");
 }
